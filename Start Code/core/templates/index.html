@@ -37,7 +37,7 @@
                 <td>{{ todo.is_completed }}</td>
                 <td>
                     {% if not todo.is_completed %}  
-                        <button  class="btn btn-xs btn-success" hx-post="{% url 'complete-todo' todo.pk %}" hx-headers='{"X-CSRFToken": "{{csrf_token}}"}'>Marc complete</button>
+                        <button  class="btn btn-xs btn-success" hx-post="{% url 'complete-todo' todo.pk %}" hx-headers='{"X-CSRFToken": "{{csrf_token}}"}' hx-target="closest tr" hx-swap="outerHTML">Marc complete</button>
                     {% endif %}
                     <button class="btn btn-xs btn-error">Delete</button>                     
                 </td>
