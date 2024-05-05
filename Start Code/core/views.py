@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 from core.models import Todo
 from core.forms import TodoForm
@@ -21,3 +21,12 @@ def submit_todo(request):
         # return an html partial
         context = {"todo": todo}
         return render(request, "index.html#todoitem-partial", context)
+
+
+@login_required
+def complete_todo(request, pk):
+    todo = get_object_or_404(Todo, pk=pk, user=request.user)
+    todo.is_completed = True
+    todo.save()
+    context = {"todo": todo}
+    return render(request, "index.html#todoitem-partial", context)
