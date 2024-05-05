@@ -5,8 +5,15 @@
 <div class="flex flex-col items-center mx-10 md:mx-20">
 <h1 class="prose-2xl mb-4">{{ user.username }}'s To-Do list</h1>
 
-<form class="mb-4">
-    {{form.as_p}}
+<form class="mb-4" hx-post="{% url 'submit-todo' %}" hx-target="#todo-table-body">
+    <div class="form-control">
+        <label>Task Description</label>
+        {% render_field form.description class="input input-bordered max-w-xs" %}
+    </div>
+    <div class="form-control">
+        <label>Is completed?</label>
+        {% render_field form.is_completed class="checkbox checkbox-success" %}
+    </div>
     <button type="submit" class="btn btn-primary mt-2">Submit</button>
 </form>
 
