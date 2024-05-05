@@ -19,3 +19,5 @@ def submit_todo(request):
         todo.save()
 
         # return an html partial
+        context = {"todo": todo}
+        return render(request, "index.html#todoitem-partial", context)

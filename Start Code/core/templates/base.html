@@ -10,7 +10,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
 </head>
-<body>
+<body hx-headers="X-CSRFToken: {{ csrf_token }}">
 
     <div class="container mt-4">
         {% block content %}
